@@ -1,0 +1,37 @@
+mysql> use mydb;
+Database changed
+mysql> create table mt(mount char(20), alt int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc mt;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| mount | char(20) | YES  |     | NULL    |       |
+| alt   | int      | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into mt values('설악산', 1708);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mt values('지리산', 1900);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from mt;
++--------+------+
+| mount  | alt  |
++--------+------+
+| 설악산 | 1708 |
+| 지리산 | 1900 |
++--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from mt;
++--------+------+
+| mount  | alt  |
++--------+------+
+| 설악산 | 1708 |
+| 지리산 | 1900 |
++--------+------+
+2 rows in set (0.00 sec)

@@ -1,0 +1,121 @@
+mysql> create mtdb
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'mtdb' at line 1
+mysql> create data mydb
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'data mydb' at line 1
+mysql> create database mydb;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bdb                |
+| information_schema |
+| kdb                |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.01 sec)
+
+mysql> use mydb;
+Database changed
+mysql> create table mt(mount char(20), alt int);
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> desc mt;
++-------+----------+------+-----+---------+-------+
+| Field | Type     | Null | Key | Default | Extra |
++-------+----------+------+-----+---------+-------+
+| mount | char(20) | YES  |     | NULL    |       |
+| alt   | int      | YES  |     | NULL    |       |
++-------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into mt values('설악산', 1708);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into mt values('지리산', 1900);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from mt;
++--------+------+
+| mount  | alt  |
++--------+------+
+| 설악산 | 1708 |
+| 지리산 | 1900 |
++--------+------+
+2 rows in set (0.00 sec)
+
+mysql> select * from mt;
++--------+------+
+| mount  | alt  |
++--------+------+
+| 설악산 | 1708 |
+| 지리산 | 1900 |
++--------+------+
+2 rows in set (0.00 sec)
+
+mysql> create database kdb;
+ERROR 1007 (HY000): Can't create database 'kdb'; database exists
+mysql> create databases;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'databases' at line 1
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| bdb                |
+| information_schema |
+| kdb                |
+| mydb               |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> use mydb;
+Database changed
+mysql> create table mt(movie char(20), actor char(20) audience int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'audience int)' at line 1
+mysql> create table movie(name char(20), actor char(20) audience int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'audience int)' at line 1
+mysql> create table movie(name char(20), actor char(20), audience int);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> insert into movie values('해운대','설경구', 1139);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into movie values('광해','이병헌', 1232);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into movie values('도둑들','전지현', 1302);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_mydb |
++----------------+
+| movie          |
+| mt             |
++----------------+
+2 rows in set (0.01 sec)
+
+mysql> select * from movie;
++--------+--------+----------+
+| name   | actor  | audience |
++--------+--------+----------+
+| 해운대 | 설경구 |     1139 |
+| 광해   | 이병헌 |     1232 |
+| 도둑들 | 전지현 |     1302 |
++--------+--------+----------+
+3 rows in set (0.00 sec)
+
+mysql>
