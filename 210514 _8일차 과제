@@ -1,0 +1,85 @@
+#############################################
+
+mysql 계정(account) 만들기 
+계정(account)
+id : ace
+pw : 1234
+사용DB : acedb
+#############################################
+
+위 참고해서 계정을 생성하시오.
+계정명 : ai, passwd : aiai
+사용DB : aidb
+
+새로운 connection 만들기 
+
+테이블 생성 : aitab 
+
+---------
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u ai -p
+select user();
++--------------+
+| user()       |
++--------------+
+| ai@localhost |
++--------------+
+1 row in set (0.00 sec)
+
+mysql> use aidb;
+Database changed
+mysql> create table aitab (name varchar(20),
+    -> kor tinyint,
+    -> eng tinyint,
+    -> mat tinyint,
+    -> id int auto_increment primary key);
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_aidb |
++----------------+
+| aitab          |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> desc aitab;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| name  | varchar(20) | YES  |     | NULL    |                |
+| kor   | tinyint     | YES  |     | NULL    |                |
+| eng   | tinyint     | YES  |     | NULL    |                |
+| mat   | tinyint     | YES  |     | NULL    |                |
+| id    | int         | NO   | PRI | NULL    | auto_increment |
++-------+-------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+##################################################
+
+테이블에 insert후 select하기
+총점 역순으로 출력 
+
+---------------
+
+select  user();
+use aidb;
+show tables;
+
+insert into aitab(name, kor, eng, mat) values('이순신',85,87,90);
+insert into aitab(name, kor, eng, mat) values('강감찬',75,80,95);
+insert into aitab(name, kor, eng, mat) values('한석봉',99,98,99);
+insert into aitab(name, kor, eng, mat) values('황진이',35,45,20);
+insert into aitab(name, kor, eng, mat) values('안중근',90,85,90);
+insert into aitab(name, kor, eng, mat) values('박문수',95,98,96);
+insert into aitab(name, kor, eng, mat) values('임꺽정',15,35,45);
+insert into aitab(name, kor, eng, mat) values('김정호',90,95,80);
+insert into aitab(name, kor, eng, mat) values('정몽주',90,90,95);
+insert into aitab(name, kor, eng, mat) values('아무개',50,45,60);
+
+delete aitab from aidb; 
+
+### 위의 내용을 여러번 실행하여...같은 row가 여러개 실행되어 workbench에서 삭제하려 했지만 에러가 계속 발생해 명령프롬프트 MYSQL에서 삭제하고 다시 실행하였다....
+
+
+select name, (kor + eng + mat) as '총점' from aitab order by (kor + eng + mat) desc;
+## desc는 큰 숫자부터..정렬함 
