@@ -1,11 +1,3 @@
-C:\Users\CPB06GameN>mysql
-ERROR 1045 (28000): Access denied for user 'ODBC'@'localhost' (using password: NO)
-
-C:\Users\CPB06GameN>cd C:\Program Files\MySQL\MySQL Server 8.0\bin
-
-C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql
-ERROR 1045 (28000): Access denied for user 'ODBC'@'localhost' (using password: NO)
-
 C:\Program Files\MySQL\MySQL Server 8.0\bin>mysql -u mymy -p
 Enter password: ****
 Welcome to the MySQL monitor.  Commands end with ; or \g.
@@ -74,12 +66,6 @@ mysql> desc oecd;
 +-----------+----------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
 
-mysql> insert into oecd values(USA, 318816000, 4.39);
-ERROR 1054 (42S22): Unknown column 'USA' in 'field list'
-mysql> insert into oecd values(usa, 318816000, 4.39);
-ERROR 1054 (42S22): Unknown column 'usa' in 'field list'
-mysql> insert into oecd values(USA, 318816000, 4.39);
-ERROR 1054 (42S22): Unknown column 'USA' in 'field list'
 mysql> insert into oecd values('USA', 318816000, 4.39);
 Query OK, 1 row affected (0.01 sec)
 
@@ -109,10 +95,6 @@ mysql> select * from oecd;
 +--------+-----------+----------+
 3 rows in set (0.00 sec)
 
-mysql> alter type = float where fieldname =  popratio;
-ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'type = float where fieldname =  popratio' at line 1
-mysql> delete from oecd where nation = USA;
-ERROR 1054 (42S22): Unknown column 'USA' in 'where clause'
 mysql> delete from oecd where nation = 'USA';
 Query OK, 1 row affected (0.01 sec)
 
