@@ -36,17 +36,8 @@ mysql> use bluedb;
 Database changed
 mysql> select user();
 
-
-
-
-
-
-
 ##
 pip install python3
 cat > k.py
 이후 파이썬을 복사해서 붙인 후 enter키 누르고 ctrl+d
 python3 k.py --> 이때 k는 파이썬 파일 이름
-
-
-
