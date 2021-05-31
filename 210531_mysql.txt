@@ -1,0 +1,52 @@
+## blue에 linux에 접속하기 위한 user생성
+j@j:~$ sudo useradd -m -s /bin/bash -d /home/blue blue
+j@j:~$ sudo passwd blue
+새  암호:
+새  암호 재입력:
+j@j:~$ tail -3 /etc/passwd
+j@j:~$ ls /home
+j@j:~$ sudo mysql -u root -p
+
+##db에 접속하기 위한 user 생성
+
+mysql> alter user 'root'@'localhost' identified with mysql_native_password by 'jj';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create database bluedb;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> create user myblue@'%' identified by '11';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> grant all privileges on bluedb.* to myblue@'%' with grant option;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> flush privileges;
+Query OK, 0 rows affected (0.01 sec)
+
+##mysql에서 파이썬을 불러옴
+
+blue@j:~$ mysql -u myblue -p
+mysql> select user()
+    -> ;
+mysql> use bluedb;
+Database changed
+mysql> select user();
+
+
+
+
+
+
+
+##
+pip install python3
+cat > k.py
+이후 파이썬을 복사해서 붙인 후 enter키 누르고 ctrl+d
+python3 k.py --> 이때 k는 파이썬 파일 이름
+
+
+
